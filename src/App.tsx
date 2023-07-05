@@ -244,7 +244,7 @@ const App = () => {
                       } }
                     >
                       { [
-                        "ar", "de", "en", "es", "fr", "ja", "ko", "zh",
+                        "ar", "br", "de", "en", "es", "fr", "ja", "ko", "zh",
                       ].map(l => <MenuItem key={ l } value={ l }>{ l }</MenuItem>) }
                     </Select>
                   </FormControl>
