@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { getMonth } from "date-fns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { blue, orange } from "@mui/material/colors";
-import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,85 +12,37 @@ import { AlertProps } from "react-mui-scheduler/src/types";
 import Container from "@mui/material/Container";
 import { PaletteMode } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
+import { useLocalStorage } from "usehooks-ts";
+import defaultEvents from "./events";
+import defaultTheme from "./theme";
 
-const themeObj = (mode: PaletteMode): ThemeOptions => ({
-  palette: {
-    mode,
-    divider: "rgba(0, 0, 0, 0.12)",
-    primary: {
-      light: blue[400],
-      main: blue[500],
-      dark: blue[700],
-      contrastText: "#fff",
-    },
-    secondary: {
-      light: orange[400],
-      main: orange[500],
-      dark: orange[700],
-      contrastText: "#fff",
-    },
-    contrastThreshold: 3,
+const toolbarProps: ToolbarProps = {
+  showSearchBar: true,
+  showSwitchModeButtons: {
+    showMonthButton: true,
+    showWeekButton: true,
+    showDayButton: true,
+    showTimelineButton: true,
   },
-});
+  showDatePicker: true,
+  showOptions: true,
+};
 
-let month = getMonth(new Date());
-month++;
-const defaultEvents: Event[] = [
-  {
-    id: `event-1`,
-    label: "Medical consultation",
-    groupLabel: "Dr Shaun Murphy",
-    user: "Dr Shaun Murphy",
-    color: "#f28f6a",
-    startHour: "04:00 AM",
-    endHour: "06:00 AM",
-    date: `2022-${ month }-01`,
-    createdAt: new Date(),
-    createdBy: "Kristina Mayer",
-  },
-  {
-    id: `event-2`,
-    label: "Medical consultation",
-    groupLabel: "Dr Claire Brown",
-    user: "Dr Claire Brown",
-    color: "#099ce5",
-    startHour: "09:00 AM",
-    endHour: "10:00 AM",
-    date: `2022-${ month }-02`,
-    createdAt: new Date(),
-    createdBy: "Kristina Mayer",
-  },
-  {
-    id: `event-3`,
-    label: "Medical consultation",
-    groupLabel: "Dr Menlendez Hary",
-    user: "Dr Menlendez Hary",
-    color: "#263686",
-    startHour: "13:00 PM",
-    endHour: "14:00 PM",
-    date: `2022-${ month }-04`,
-    createdAt: new Date(),
-    createdBy: "Kristina Mayer",
-  },
-  {
-    id: `event-4`,
-    label: "Consultation prénatale",
-    groupLabel: "Dr Shaun Murphy",
-    user: "Dr Shaun Murphy",
-    color: "#f28f6a",
-    startHour: "08:00 AM",
-    endHour: "09:00 AM",
-    date: `2022-${ month }-28`,
-    createdAt: new Date(),
-    createdBy: "Kristina Mayer",
-  },
-];
+const alertProps: AlertProps = {
+  open: true,
+  color: "info",
+  severity: "info",
+  message: "🚀 Let's start with awesome react-mui-scheduler 🔥 🔥 🔥",
+  showActionButton: true,
+  showNotification: false,
+  delay: 1500,
+};
 
 const App = () => {
-  const [paletteMode, setPaletteMode] = useState<PaletteMode>("light");
-  const [mode, setMode] = useState<Mode>(Mode.MONTH);
-  const [weekStart, setWeekStart] = useState<string>("mon");
-  const [legacyStyle, setLegacyStyle] = useState<boolean>(false);
+  const [paletteMode, setPaletteMode] = useLocalStorage<PaletteMode>("paletteMode", "light");
+  const [mode, setMode] = useLocalStorage<Mode>("mode", Mode.MONTH);
+  const [weekStart, setWeekStart] = useLocalStorage<string>("weekStart", "mon");
+  const [legacyStyle, setLegacyStyle] = useLocalStorage<boolean>("legacyStyle", false);
   const [locale, setLocale] = useState<string>(
     localStorage.getItem("i18nextLng") || "en",
   );
@@ -100,33 +50,14 @@ const App = () => {
   const [state, setState] = useState({
     options: {
       transitionMode: TransitionMode.ZOOM,
-      startWeekOn: "sun",
-      defaultMode: Mode.MONTH,
+      startWeekOn: weekStart || "sun",
+      defaultMode: mode || Mode.MONTH,
       minWidth: 540,
       maxWidth: 540,
       minHeight: 540,
       maxHeight: 540,
     } as Option,
-    alertProps: {
-      open: true,
-      color: "info",
-      severity: "info",
-      message: "🚀 Let's start with awesome react-mui-scheduler 🔥 🔥 🔥",
-      showActionButton: true,
-      showNotification: false,
-      delay: 1500,
-    } as AlertProps,
-    toolbarProps: {
-      showSearchBar: true,
-      showSwitchModeButtons: {
-        showMonthButton: true,
-        showWeekButton: true,
-        showDayButton: true,
-        showTimelineButton: true,
-      },
-      showDatePicker: true,
-      showOptions: true,
-    } as ToolbarProps,
+    alertProps,
   });
 
   const handleCellClick = (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>, row: any, day: any) => {
@@ -167,7 +98,7 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={ createTheme(themeObj(paletteMode)) }>
+    <ThemeProvider theme={ createTheme(defaultTheme(paletteMode)) }>
       <CssBaseline/>
       <LocalizationProvider dateAdapter={ AdapterDateFns }>
         <Container maxWidth={ false } sx={ { pt: 2 } }>
@@ -272,7 +203,7 @@ const App = () => {
                 legacyStyle={ legacyStyle }
                 options={ state?.options }
                 alertProps={ state?.alertProps }
-                toolbarProps={ state?.toolbarProps }
+                toolbarProps={ toolbarProps }
                 onEventsChange={ handleEventsChange }
                 onCellClick={ handleCellClick }
                 onTaskClick={ handleEventClick }
