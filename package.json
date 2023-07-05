@@ -1,57 +1,58 @@
 {
-  "name": "react-mui-scheduler",
-  "version": "3.0.0",
-  "description": "📅 React mui scheduler is a react component based on @mui v5 that allows you to manage data in a calendar",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc"
-  },
-  "files": [
-    "README.md",
-    "CHANGELOG.md",
-    "dist",
-    "src",
-    "src/locales/**/*.json"
-  ],
-  "keywords": [
-    "react",
-    "material",
-    "scheduler",
-    "material-ui",
-    "mui",
-    "calendar"
-  ],
-  "author": "rouftom",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rouftom/react-mui-scheduler.git"
-  },
-  "homepage": "https://github.com/rouftom/react-mui-scheduler#readme",
-  "bugs": {
-    "url": "https://github.com/rouftom/react-mui-scheduler/issues"
-  },
+  "homepage": "https://rouftom.github.io/react-mui-scheduler-demo",
+  "name": "react-mui-scheduler-demo",
+  "version": "0.1.1",
+  "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/lab": "^5.0.0-alpha.134",
-    "@mui/material": "^5.13.6",
-    "@mui/system": "^5.13.6",
+    "@mui/icons-material": "^5.13.7",
+    "@mui/lab": "^5.0.0-alpha.135",
+    "@mui/material": "^5.13.7",
+    "@mui/system": "^5.13.7",
     "@mui/x-date-pickers": "^6.9.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/node": "^20.3.3",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
     "date-fns": "^2.30.0",
-    "i18next": "^23.2.7",
     "prop-types": "^15.8.1",
-    "react-i18next": "^13.0.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-mui-scheduler": "github:emulienfou/react-mui-scheduler#main",
+    "react-scripts": "^5.0.1",
+    "typescript": "^4.8.4",
+    "web-vitals": "^3.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@tsconfig/node12": "^1.0.11",
-    "@types/node": "^18.2.0",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "autoprefixer": "^10.4.14",
-    "react": "^18.2.0",
-    "typescript": "^4.8.4"
+    "gh-pages": "^5.0.0"
   }
 }
