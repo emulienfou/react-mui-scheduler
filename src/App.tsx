@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import { parse } from "date-fns";
 import { getMonth } from "date-fns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { blue, orange } from "@mui/material/colors";
-import { createTheme, ThemeOptions, ThemeProvider, useTheme } from "@mui/material/styles";
+import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Scheduler, { Event, Mode, Option, ToolbarProps, TransitionMode } from "react-mui-scheduler";
 import { AlertProps } from "react-mui-scheduler/src/types";
+import Container from "@mui/material/Container";
+import { PaletteMode } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 
-const themeObj: ThemeOptions = {
+const themeObj = (mode: PaletteMode): ThemeOptions => ({
   palette: {
-    mode: "light",
+    mode,
     divider: "rgba(0, 0, 0, 0.12)",
     primary: {
       light: blue[400],
@@ -32,7 +33,7 @@ const themeObj: ThemeOptions = {
     },
     contrastThreshold: 3,
   },
-};
+});
 
 let month = getMonth(new Date());
 month++;
@@ -88,9 +89,7 @@ const defaultEvents: Event[] = [
 ];
 
 const App = () => {
-  const theme = useTheme();
-  const [task, setTask] = useState<Event | undefined>();
-  const [selectedDay, setSelectedDay] = useState<Date | null>();
+  const [paletteMode, setPaletteMode] = useState<PaletteMode>("light");
   const [mode, setMode] = useState<Mode>(Mode.MONTH);
   const [weekStart, setWeekStart] = useState<string>("mon");
   const [legacyStyle, setLegacyStyle] = useState<boolean>(false);
@@ -138,8 +137,6 @@ const App = () => {
 
   const handleEventClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, task: Event): void => {
     console.log("Event clicked");
-    setSelectedDay(parse(task?.date, "yyyy-MM-dd", new Date()));
-    setTask(task);
     alert(JSON.stringify(task, null, 2));
   };
 
@@ -170,14 +167,10 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={ createTheme(themeObj) }>
+    <ThemeProvider theme={ createTheme(themeObj(paletteMode)) }>
+      <CssBaseline/>
       <LocalizationProvider dateAdapter={ AdapterDateFns }>
-        <Box sx={ {
-          p: 1,
-          display: "flex",
-          flexGrow: 1,
-          backgroundColor: theme.palette.background.default,
-        } }>
+        <Container maxWidth={ false } sx={ { pt: 2 } }>
           <Grid
             container
             spacing={ 2 }
@@ -186,7 +179,7 @@ const App = () => {
           >
             <Grid item xs={ 12 } sm={ 10 } md={ 10 }>
               <Grid container spacing={ 2 } sx={ { mb: 2 } }>
-                <Grid item xs={ 6 } sm>
+                <Grid item sm>
                   <FormControl size="small" fullWidth>
                     <InputLabel id="legacyStyle-select">Legacy style</InputLabel>
                     <Select
@@ -200,7 +193,7 @@ const App = () => {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={ 6 } sm>
+                <Grid item sm>
                   <FormControl size="small" fullWidth>
                     <InputLabel id="week-start-select">Week start</InputLabel>
                     <Select
@@ -218,7 +211,7 @@ const App = () => {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={ 6 } sm>
+                <Grid item sm>
                   <FormControl size="small" fullWidth>
                     <InputLabel id="mode-select">Mode</InputLabel>
                     <Select
@@ -238,7 +231,7 @@ const App = () => {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={ 6 } sm>
+                <Grid item sm>
                   <FormControl size="small" fullWidth>
                     <InputLabel id="locale-select">Locale</InputLabel>
                     <Select
@@ -253,6 +246,22 @@ const App = () => {
                       { [
                         "ar", "de", "en", "es", "fr", "ja", "ko", "zh",
                       ].map(l => <MenuItem key={ l } value={ l }>{ l }</MenuItem>) }
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item sm>
+                  <FormControl size="small" fullWidth>
+                    <InputLabel id="palette-mode-select">Palette mode</InputLabel>
+                    <Select
+                      value={ paletteMode }
+                      label="Palette mode"
+                      id="palette-mode-select"
+                      labelId="palette-mode-select"
+                      onChange={ (event) => {
+                        setPaletteMode(event.target.value as PaletteMode);
+                      } }
+                    >
+                      { ["light", "dark"].map(l => <MenuItem key={ l } value={ l }>{ l }</MenuItem>) }
                     </Select>
                   </FormControl>
                 </Grid>
@@ -272,7 +281,7 @@ const App = () => {
               />
             </Grid>
           </Grid>
-        </Box>
+        </Container>
       </LocalizationProvider>
     </ThemeProvider>
   );
