@@ -15,6 +15,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { useLocalStorage } from "usehooks-ts";
 import defaultEvents from "./events";
 import defaultTheme from "./theme";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 
 const toolbarProps: ToolbarProps = {
   showSearchBar: true,
@@ -26,6 +30,24 @@ const toolbarProps: ToolbarProps = {
   },
   showDatePicker: true,
   showOptions: true,
+  optionMenus: [
+    {
+      label: "Read events",
+      icon: <PlayCircleOutlineIcon fontSize="small"/>,
+    },
+    {
+      label: "Refresh",
+      icon: <AutorenewIcon fontSize="small"/>,
+    },
+    {
+      label: "Export",
+      icon: <ArchiveIcon fontSize="small"/>,
+    },
+    {
+      label: "Print",
+      icon: <LocalPrintshopIcon fontSize="small"/>,
+    },
+  ],
 };
 
 const alertProps: AlertProps = {
