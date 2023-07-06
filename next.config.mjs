@@ -3,6 +3,8 @@
  */
 const nextConfig = {
   reactStrictMode: true,
+  output: "export",
+  basePath: "/gh-pages",
 };
 
 export default nextConfig;
