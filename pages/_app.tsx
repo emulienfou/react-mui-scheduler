@@ -25,6 +25,7 @@ import ListSubheader from "@mui/material/ListSubheader";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import Link from "next/link";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -74,17 +75,17 @@ const App: FC<AppProps> = (props) => {
                   subheader={
                     <ListSubheader component="div" id="nested-list-subheader">Getting Started</ListSubheader>
                   }>
-                  <ListItemButton href="/">
+                  <ListItemButton href="/" component={ Link }>
                     <ListItemText primary="Installation"/>
                   </ListItemButton>
                 </List>
                 <List
                   component="nav"
                   subheader={ <ListSubheader component="div" id="nested-list-subheader">Examples</ListSubheader> }>
-                  <ListItemButton href="/basic-example">
+                  <ListItemButton href="/basic-example" component={ Link }>
                     <ListItemText primary="Basic"/>
                   </ListItemButton>
-                  <ListItemButton href="advanced-example">
+                  <ListItemButton href="/advanced-example" component={ Link }>
                     <ListItemText primary="Advanced"/>
                   </ListItemButton>
                 </List>

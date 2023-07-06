@@ -4,7 +4,7 @@
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
-  basePath: "/gh-pages",
+  basePath: "/react-mui-scheduler",
 };
 
 export default nextConfig;
