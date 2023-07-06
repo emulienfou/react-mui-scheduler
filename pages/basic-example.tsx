@@ -1,4 +1,4 @@
-import React, { FC, JSX } from "react";
+import React, { JSX } from "react";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
 
