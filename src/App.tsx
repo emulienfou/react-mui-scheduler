@@ -7,7 +7,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Scheduler, { Event, Mode, Option, ToolbarProps, TransitionMode } from "react-mui-scheduler";
+import Scheduler, { Event, Mode, Option, StartWeek, ToolbarProps, TransitionMode } from "react-mui-scheduler";
 import { AlertProps } from "react-mui-scheduler/src/types";
 import Container from "@mui/material/Container";
 import { PaletteMode } from "@mui/material";
@@ -41,7 +41,7 @@ const alertProps: AlertProps = {
 const App = () => {
   const [paletteMode, setPaletteMode] = useLocalStorage<PaletteMode>("paletteMode", "light");
   const [mode, setMode] = useLocalStorage<Mode>("mode", Mode.MONTH);
-  const [weekStart, setWeekStart] = useLocalStorage<string>("weekStart", "mon");
+  const [weekStart, setWeekStart] = useLocalStorage<StartWeek>("weekStart", StartWeek.MON);
   const [legacyStyle, setLegacyStyle] = useLocalStorage<boolean>("legacyStyle", false);
   const [locale, setLocale] = useState<string>(
     localStorage.getItem("i18nextLng") || "en",
@@ -50,7 +50,7 @@ const App = () => {
   const [state, setState] = useState({
     options: {
       transitionMode: TransitionMode.ZOOM,
-      startWeekOn: weekStart || "sun",
+      startWeekOn: weekStart || StartWeek.SUN,
       defaultMode: mode || Mode.MONTH,
       minWidth: 540,
       maxWidth: 540,
@@ -133,8 +133,8 @@ const App = () => {
                       id="week-start-select"
                       labelId="week-start-select"
                       onChange={ (event) => {
-                        setWeekStart(event.target.value);
-                        state.options.startWeekOn = event.target.value;
+                        setWeekStart(StartWeek[event.target.value.toUpperCase()]);
+                        state.options.startWeekOn = StartWeek[event.target.value.toUpperCase()];
                         setState({ ...state });
                       } }
                     >
