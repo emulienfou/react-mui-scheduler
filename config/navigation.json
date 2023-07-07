@@ -1,0 +1,32 @@
+[
+  {
+    "label": "Getting started",
+    "children": [
+      {
+        "label": "Installation",
+        "href": "/"
+      },
+      {
+        "label": "Configuration",
+        "href": "/configuration"
+      }
+    ]
+  },
+  {
+    "label": "Examples",
+    "children": [
+      {
+        "label": "Basic",
+        "href": "/basic-example"
+      },
+      {
+        "label": "Advanced",
+        "href": "/advanced-example"
+      },
+      {
+        "label": "Next.js",
+        "href": "/nextjs-example"
+      }
+    ]
+  }
+]

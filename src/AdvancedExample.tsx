@@ -7,13 +7,13 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import { AlertProps } from "react-mui-scheduler/src/types";
 import { useLocalStorage } from "usehooks-ts";
-import defaultEvents from "./events";
+import defaultEvents from "../config/events";
 import Grid from "@mui/material/Grid";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import untold from "./untold";
+import untold from "../config/untold";
 
 const toolbarProps: ToolbarProps = {
   showSearchBar: true,

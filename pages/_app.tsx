@@ -4,8 +4,8 @@ import { AppProps as MuiAppProps } from "next/app";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider, EmotionCache } from "@emotion/react";
-import themeOptions from "../src/theme";
-import createEmotionCache from "../src/createEmotionCache";
+import themeOptions from "../config/theme";
+import createEmotionCache from "../config/createEmotionCache";
 import { FC, useMemo } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import { PaletteMode } from "@mui/material";
@@ -26,6 +26,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Link from "next/link";
+import navigation from "../config/navigation.json";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -70,25 +71,20 @@ const App: FC<AppProps> = (props) => {
           <Container maxWidth="xl" sx={ { pt: 4 } }>
             <Grid container columnSpacing={ 4 } rowSpacing={ 0 }>
               <Grid item sm={ 1.5 } sx={ { borderRight: (theme) => `thin solid ${ theme.palette.divider }` } }>
-                <List
-                  component="nav"
-                  subheader={
-                    <ListSubheader component="div" id="nested-list-subheader">Getting Started</ListSubheader>
-                  }>
-                  <ListItemButton href="/" component={ Link }>
-                    <ListItemText primary="Installation"/>
-                  </ListItemButton>
-                </List>
-                <List
-                  component="nav"
-                  subheader={ <ListSubheader component="div" id="nested-list-subheader">Examples</ListSubheader> }>
-                  <ListItemButton href="/basic-example" component={ Link }>
-                    <ListItemText primary="Basic"/>
-                  </ListItemButton>
-                  <ListItemButton href="/advanced-example" component={ Link }>
-                    <ListItemText primary="Advanced"/>
-                  </ListItemButton>
-                </List>
+                { navigation.map(({ label, children }) => (
+                  <List
+                    key={ label }
+                    component="nav"
+                    subheader={
+                      <ListSubheader component="div" id="nested-list-subheader">{ label }</ListSubheader>
+                    }>
+                    { children.map(({ label, href }) => (
+                      <ListItemButton href={ href } component={ Link } key={ label }>
+                        <ListItemText primary={ label } primaryTypographyProps={ { variant: "body2" } }/>
+                      </ListItemButton>
+                    )) }
+                  </List>
+                )) }
               </Grid>
               <Grid item sm={ 10 }>
                 <Component { ...pageProps } />

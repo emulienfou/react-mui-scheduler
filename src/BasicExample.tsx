@@ -1,7 +1,7 @@
 import React, { FC, JSX } from "react";
 import Scheduler, { Mode, Option, StartWeek, TransitionMode } from "react-mui-scheduler";
 import "react-mui-scheduler/dist/locales/i18n";
-import events from "./events";
+import events from "../config/events";
 
 const options: Option = {
   transitionMode: TransitionMode.ZOOM,
@@ -14,16 +14,12 @@ const options: Option = {
   reverseTimelineOrder: false,
 };
 
-const BasicExample: FC = (): JSX.Element => {
-  return (
-    <div>
-      <Scheduler
-        locale="en"
-        events={ events }
-        options={ options }
-      />
-    </div>
-  );
-};
+const BasicExample: FC = (): JSX.Element => (
+  <Scheduler
+    locale="en"
+    events={ events }
+    options={ options }
+  />
+);
 
 export default BasicExample;

@@ -9,8 +9,8 @@ import Document, {
 } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
 import { AppType } from "next/app";
-import { roboto } from "../src/theme";
-import createEmotionCache from "../src/createEmotionCache";
+import { roboto } from "../config/theme";
+import createEmotionCache from "../config/createEmotionCache";
 import { AppProps } from "./_app";
 
 interface MyDocumentProps extends DocumentProps {

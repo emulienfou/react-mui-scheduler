@@ -19,6 +19,7 @@ const Index: NextPage = (): JSX.Element => {
         <Divider sx={ { my: 2 } }/>
         <CodeRenderer language="typescript" code={
           `import Scheduler, { Mode, Option, StartWeek, TransitionMode } from "react-mui-scheduler";
+// Import i18Next configuration
 import "react-mui-scheduler/dist/locales/i18n";
 
 const events: Event[] = [
