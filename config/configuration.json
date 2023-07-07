@@ -1,0 +1,334 @@
+[
+  {
+    "label": "Options",
+    "rows": [
+      {
+        "name": "transitionMode",
+        "type": "TransitionMode",
+        "defaultValue": "TransitionMode.ZOOM",
+        "description": "This option is used to define the type of scheduler transition",
+        "values": ["TransitionMode.ZOOM", "TransitionMode.FADE", "TransitionMode.SLIDE"]
+      },
+      {
+        "name": "startWeekOn",
+        "type": "StartWeek",
+        "defaultValue": "StartWeek.MON",
+        "description": "This option is used to set the start of the calendar week to Monday or Sunday",
+        "values": ["StartWeek.MON", "StartWeek.SUN"]
+      },
+      {
+        "name": "defaultMode",
+        "type": "Mode",
+        "defaultValue": "Mode.WEEK",
+        "description": "This option allows you to define the type of view to display",
+        "values": ["Mode.MONTH", "Mode.WEEK", "Mode.DAY", "Mode.TIMELINE"]
+      },
+      {
+        "name": "minWidth",
+        "type": "number",
+        "defaultValue": "540",
+        "description": "This option allows you to define the minimum width of the container",
+        "values": []
+      },
+      {
+        "name": "maxWidth",
+        "type": "number",
+        "defaultValue": "540",
+        "description": "This option allows you to define the maximum width of the container",
+        "values": []
+      },
+      {
+        "name": "minHeight",
+        "type": "number",
+        "defaultValue": "540",
+        "description": "This option allows you to define the minimum height of the container",
+        "values": []
+      },
+      {
+        "name": "maxHeight",
+        "type": "number",
+        "defaultValue": "540",
+        "description": "This option allows you to define the maximum height of the container",
+        "values": []
+      },
+      {
+        "name": "reverseTimelineOrder",
+        "type": "boolean",
+        "defaultValue": "false",
+        "description": "This option allows you to define the order of events displayed in Timeline view",
+        "values": ["false", "true"]
+      }
+    ]
+  },
+  {
+    "label": "Props",
+    "rows": [
+      {
+        "name": "locale",
+        "type": "string",
+        "defaultValue": "enUS",
+        "description": "This prop is used to set the locale of the scheduler",
+        "values": ["ar", "br", "de", "enUS", "es", "fr", "ja", "ko", "zh"]
+      },
+      {
+        "name": "events",
+        "type": "Event[]",
+        "defaultValue": "",
+        "description": "This prop sets event data",
+        "values": []
+      },
+      {
+        "name": "legacyStyle",
+        "type": "boolean",
+        "defaultValue": "false",
+        "description": "This prop allows to use the old display style",
+        "values": ["false", "true"]
+      },
+      {
+        "name": "options",
+        "type": "Option",
+        "defaultValue": "",
+        "description": "This prop is used to set scheduler properties",
+        "values": []
+      },
+      {
+        "name": "alertProps",
+        "type": "AlertProps",
+        "defaultValue": "",
+        "description": "This prop is used to set scheduler properties",
+        "values": []
+      },
+      {
+        "name": "toolbarProps",
+        "type": "ToolbarProps",
+        "defaultValue": "",
+        "description": "This prop is used to set toolbar properties",
+        "values": []
+      },
+      {
+        "name": "onEventsChange",
+        "type": "event",
+        "defaultValue": "",
+        "description": "This event is fired when the event change occurs",
+        "values": []
+      },
+      {
+        "name": "onCellClick",
+        "type": "event",
+        "defaultValue": "",
+        "description": "This event is fired when a cell is clicked",
+        "values": []
+      },
+      {
+        "name": "onTaskClick",
+        "type": "event",
+        "defaultValue": "",
+        "description": "This event is fired when a task is clicked",
+        "values": []
+      },
+      {
+        "name": "onAlertCloseButtonClicked",
+        "type": "event",
+        "defaultValue": "",
+        "description": "This event is fired when the close button of the alert component",
+        "values": []
+      },
+      {
+        "name": "onDateChange",
+        "type": "event",
+        "defaultValue": "",
+        "description": "This event is fired when a date from the DatePicker is clicked",
+        "values": []
+      }
+    ]
+  },
+  {
+    "label": "Alert props",
+    "rows": [
+      {
+        "name": "open",
+        "type": "boolean",
+        "defaultValue": "true",
+        "description": "This option opens the notification Alert component",
+        "values": ["false", "true"]
+      },
+      {
+        "name": "color",
+        "type": "AlertColor",
+        "defaultValue": "info",
+        "description": "Alert notification color",
+        "values": ["info", "success", "warning", "error"]
+      },
+      {
+        "name": "severity",
+        "type": "AlertColor",
+        "defaultValue": "info",
+        "description": "Alert notification severity",
+        "values": ["info", "success", "warning", "error"]
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "defaultValue": "\uD83D\uDE80 Let's start with awesome react-mui-scheduler \uD83D\uDD25 \uD83D\uDD25 \uD83D\uDD25",
+        "description": "Alert notification message to display",
+        "values": []
+      },
+      {
+        "name": "showActionButton",
+        "type": "boolean",
+        "defaultValue": "true",
+        "description": "This option displays or not the action button on the Alert",
+        "values": ["false", "true"]
+      },
+      {
+        "name": "showNotification",
+        "type": "boolean",
+        "defaultValue": "true",
+        "description": "This option allows to display or not a notification when data change",
+        "values": ["false", "true"]
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "defaultValue": "1500",
+        "description": "This option allows you to define the display delay in milliseconds of the Alert",
+        "values": []
+      }
+    ]
+  },
+  {
+    "label": "Toolbar props",
+    "rows": [
+      {
+        "name": "showSearchBar",
+        "type": "boolean",
+        "defaultValue": "true",
+        "description": "Show or hide the search bar",
+        "values": ["false", "true"]
+      },
+      {
+        "name": "showSwitchModeButtons.showMonthButton",
+        "type": "boolean",
+        "defaultValue": "true",
+        "description": "Show or hide the view mode button month",
+        "values": ["false", "true"]
+      },
+      {
+        "name": "showSwitchModeButtons.showWeekButton",
+        "type": "boolean",
+        "defaultValue": "true",
+        "description": "Show or hide the view mode button week",
+        "values": ["false", "true"]
+      },
+      {
+        "name": "showSwitchModeButtons.showDayButton",
+        "type": "boolean",
+        "defaultValue": "true",
+        "description": "Show or hide the view mode button day",
+        "values": ["false", "true"]
+      },
+      {
+        "name": "showSwitchModeButtons.showTimelineButton",
+        "type": "boolean",
+        "defaultValue": "true",
+        "description": "Show or hide the view mode button timeline",
+        "values": ["false", "true"]
+      },
+      {
+        "name": "showDatePicker",
+        "type": "boolean",
+        "defaultValue": "true",
+        "description": "Show or hide the date picker buttons",
+        "values": ["false", "true"]
+      }
+    ]
+  },
+  {
+    "label": "Events",
+    "rows": [
+      {
+        "name": "onCellClick",
+        "params": "event: React.MouseEvent<HTMLTableCellElement, MouseEvent>, row: any, day: any",
+        "type": "Event",
+        "description": "Triggered when clicking on a cell"
+      },
+      {
+        "name": "onEventsChange",
+        "params": "item: Event",
+        "type": "Event",
+        "description": "Triggered when clicking on an event"
+      },
+      {
+        "name": "onAlertCloseButtonClicked",
+        "params": "event: React.MouseEvent<HTMLButtonElement>",
+        "type": "Event",
+        "description": "Triggers when clicking on the close button of the notification alert"
+      },
+      {
+        "name": "onTaskClick",
+        "params": "event: React.MouseEvent<HTMLDivElement, MouseEvent>, task: Event",
+        "type": "Event",
+        "description": "Triggers when clicking on a task event"
+      },
+      {
+        "name": "onDateChange",
+        "params": "day: number, date: number | Date | null",
+        "type": "Event",
+        "description": "Triggers when clicking on a date from the DatePicker"
+      }
+    ]
+  },
+  {
+    "label": "Event interface",
+    "rows": [
+      {
+        "name": "id",
+        "type": "number | string",
+        "required": true,
+        "description": "Unique id for every event"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "color",
+        "type": "string|undefined",
+        "required": false,
+        "description": "If not set, the primary color of the theme will be applied"
+      },
+      {
+        "name": "groupLabel",
+        "type": "string",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "startHour",
+        "type": "string",
+        "required": true,
+        "description": "Hour string format with `HH:mm aaa`"
+      },
+      {
+        "name": "endHour",
+        "type": "string",
+        "required": true,
+        "description": "Hour string format with `HH:mm aaa`"
+      },
+      {
+        "name": "date",
+        "type": "string",
+        "required": true,
+        "description": "Date string, must be formatted with `yyyy-MM-dd` date format"
+      },
+      {
+        "name": "user",
+        "type": "string|undefined",
+        "required": false,
+        "description": ""
+      }
+    ]
+  }
+]
