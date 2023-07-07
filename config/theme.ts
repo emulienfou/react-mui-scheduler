@@ -15,7 +15,6 @@ export const roboto = Roboto({
 const themeOptions = (mode: PaletteMode): ThemeOptions => ({
   palette: {
     mode,
-    divider: "rgba(0, 0, 0, 0.12)",
     primary: {
       light: blue[400],
       main: blue[500],
