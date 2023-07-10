@@ -1,7 +1,9 @@
-import React, { FC, JSX } from "react";
+import React, { FC, Fragment, JSX } from "react";
 import Scheduler, { Mode, Option, StartWeek, TransitionMode } from "react-mui-scheduler";
 import "react-mui-scheduler/dist/locales/i18n";
 import events from "../config/events";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 
 const options: Option = {
   transitionMode: TransitionMode.ZOOM,
@@ -15,11 +17,15 @@ const options: Option = {
 };
 
 const BasicExample: FC = (): JSX.Element => (
-  <Scheduler
-    locale="en"
-    events={ events }
-    options={ options }
-  />
+  <Fragment>
+    <Typography variant="h1">Basic example</Typography>
+    <Divider sx={ { my: 2 } }/>
+    <Scheduler
+      locale="en"
+      events={ events }
+      options={ options }
+    />
+  </Fragment>
 );
 
 export default BasicExample;

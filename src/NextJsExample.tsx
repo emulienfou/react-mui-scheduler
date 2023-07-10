@@ -5,7 +5,7 @@ import Divider from "@mui/material/Divider";
 
 const NextJsExample: FC = (): JSX.Element => (
   <div>
-    <Typography variant="h1">Next.js</Typography>
+    <Typography variant="h1">Next.js example</Typography>
     <Typography variant="caption">
       To be able to call this component from Next.js you will need to load it dynamically.<br/>Here is a simple example
       on how to achieve this.

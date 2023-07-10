@@ -14,6 +14,8 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import untold from "../config/untold";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 
 const toolbarProps: ToolbarProps = {
   showSearchBar: true,
@@ -115,6 +117,8 @@ const AdvancedExample: FC = (): JSX.Element => {
 
   return (
     <Fragment>
+      <Typography variant="h1">Advanced example</Typography>
+      <Divider sx={ { my: 2 } }/>
       <Grid container spacing={ 2 } sx={ { mb: 2 } }>
         <Grid item sm>
           <FormControl size="small" fullWidth>
