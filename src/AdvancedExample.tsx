@@ -13,7 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import untold from "../config/untold";
+import festival from "../config/festival";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 
@@ -193,7 +193,7 @@ const AdvancedExample: FC = (): JSX.Element => {
       </Grid>
       <Scheduler
         locale={ locale }
-        events={ untold }
+        events={ festival }
         legacyStyle={ legacyStyle }
         options={ state?.options }
         alertProps={ state?.alertProps }
