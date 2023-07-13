@@ -306,22 +306,16 @@
         "description": ""
       },
       {
-        "name": "startHour",
-        "type": "string",
+        "name": "startDate",
+        "type": "Date",
         "required": true,
-        "description": "Hour string format with `HH:mm aaa`"
+        "description": "Starting Date object of the event"
       },
       {
-        "name": "endHour",
-        "type": "string",
+        "name": "endDate",
+        "type": "Date",
         "required": true,
-        "description": "Hour string format with `HH:mm aaa`"
-      },
-      {
-        "name": "date",
-        "type": "string",
-        "required": true,
-        "description": "Date string, must be formatted with `yyyy-MM-dd` date format"
+        "description": "Ending Date object of the event"
       },
       {
         "name": "user",
