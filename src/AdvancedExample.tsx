@@ -16,6 +16,19 @@ import MenuItem from "@mui/material/MenuItem";
 import festival from "../config/festival";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { format } from "date-fns";
 
 const toolbarProps: ToolbarProps = {
   showSearchBar: true,
@@ -79,6 +92,7 @@ const AdvancedExample: FC = (): JSX.Element => {
     } as Option,
     alertProps,
   });
+  const [modalData, setModalData] = useState<Event | null>(null);
 
   const handleCellClick = (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>, row: any, day: any) => {
     console.log("Cell clicked");
@@ -86,9 +100,9 @@ const AdvancedExample: FC = (): JSX.Element => {
     }
   };
 
-  const handleEventClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, task: Event): void => {
+  const handleEventClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, event: Event): void => {
     console.log("Event clicked");
-    alert(JSON.stringify(task, null, 2));
+    setModalData(event);
   };
 
   const handleEventsChange = (item: Event) => {
@@ -206,6 +220,37 @@ const AdvancedExample: FC = (): JSX.Element => {
         onAlertCloseButtonClicked={ handleAlertCloseButtonClicked }
         onDateChange={ handleDateChange }
       />
+      <Dialog
+        open={ modalData !== null }
+        onClose={ () => setModalData(null) }
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{ modalData?.label }</DialogTitle>
+        <DialogContent>
+          <TableContainer component={ Paper }>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Start</TableCell>
+                  <TableCell>End</TableCell>
+                  <TableCell>Stage</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>{ modalData?.startDate && format(modalData.startDate as Date, "yyyy-MM-dd HH:mm") }</TableCell>
+                  <TableCell>{ modalData?.endDate && format(modalData.endDate as Date, "yyyy-MM-dd HH:mm") }</TableCell>
+                  <TableCell>{ modalData?.groupLabel }</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={ () => setModalData(null) }>Close</Button>
+        </DialogActions>
+      </Dialog>
     </Fragment>
   );
 };
