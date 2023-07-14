@@ -74,6 +74,8 @@ const AdvancedExample: FC = (): JSX.Element => {
       maxWidth: 540,
       minHeight: 540,
       maxHeight: 540,
+      reverseTimelineOrder: false,
+      displayTimelineByGroupLabel: true,
     } as Option,
     alertProps,
   });
